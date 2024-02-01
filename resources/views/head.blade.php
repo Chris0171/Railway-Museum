@@ -15,7 +15,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="bg-success-subtle bg-gradient">
     @include('header')
     <div class="container-fluid mb-2 wrapper">
         @yield('content')

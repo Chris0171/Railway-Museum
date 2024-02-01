@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-12 col-md-11 mb-1 text-end">
-    <a class="btn btn-success mb-3 contShadow" href="/getTickets">Venta de entradas</a>
+    <a class="btn btn-success mb-3 contShadow" href="/ticketsSale">Venta de entradas</a>
   </div>
 </div>
 <div class="row justify-content-center align-items-center">
