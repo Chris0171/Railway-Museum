@@ -33,4 +33,5 @@
   <x-buyField>
     <x-slot name="fieldName">Adultos (7$):</x-slot>
   </x-buyField>
+  <x-slot name="errorText">Debe comprar al menos una entrada para continuar.</x-slot>
 </x-wrapper>

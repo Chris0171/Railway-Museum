@@ -12,7 +12,7 @@
           <div class="col-auto">
             <div
               class="bg-danger ps-4 pe-4 p-1 text-danger fw-bold bg-opacity-10 border border-danger rounded errorMessage">
-              Aviso: Debe comprar al menos una entrada.
+              Aviso: {{ $errorText}}
             </div>
           </div>
           <div class="col-auto ms-auto">

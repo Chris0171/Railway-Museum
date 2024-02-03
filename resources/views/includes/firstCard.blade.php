@@ -40,4 +40,6 @@
       </div>
     </div>
   </div>
+  <x-slot name="errorText">Debe rellenar todos los campos.</x-slot>
+  
 </x-wrapper>
