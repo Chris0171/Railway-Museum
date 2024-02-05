@@ -14,7 +14,10 @@
     @include('includes/firstCard')
   </div>
   <div id="second" style="display: none;">
-    @include('includes/SecondCard')
+    @include('includes/secondCard')
+  </div>
+  <div id="third" style="display: none;">
+    @include('includes/thirdCard')
   </div>
 </form>
 
