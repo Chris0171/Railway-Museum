@@ -3,6 +3,7 @@ const date_hours = document.getElementById("first");
 const buyTickets = document.getElementById("second");
 const confirmTickets = document.getElementById("third");
 const btnsNext = document.getElementsByClassName("btnNext");
+const btnsPrev = document.getElementsByClassName("btnPrev");
 const date = document.getElementById("calendary");
 const hourOptions = document.getElementsByName("franja");
 const numSales = document.getElementsByClassName("numSales");
@@ -22,7 +23,10 @@ const ticketsInf = [
     "Entrada para un adulto (7$)",
 ];
 const dis = 65;
+const currentDate = new Date().toISOString().split("T")[0];
+const disableDates = ["12-25", "01-01", "01-06"];
 
+date.min = currentDate;
 // Eventos
 btnsNext[0].addEventListener("click", function () {
     const validate = validateRadioButtons(hourOptions);
@@ -44,6 +48,14 @@ btnsNext[1].addEventListener("click", function () {
     } else {
         errorMessage[1].style.opacity = 1;
     }
+});
+btnsPrev[0].addEventListener("click", function () {
+    buyTickets.style.display = "none";
+    date_hours.style.display = "block";
+});
+btnsPrev[1].addEventListener("click", function () {
+    confirmTickets.style.display = "none";
+    buyTickets.style.display = "block";
 });
 
 function validateRadioButtons(element) {
@@ -77,6 +89,8 @@ function createCardBody() {
             }
         }
     }
+    let lastHr = document.getElementsByTagName("hr");
+    lastHr[lastHr.length - 1].style.display = "none";
 }
 
 function createRow(TicketInfo, TicketType) {
