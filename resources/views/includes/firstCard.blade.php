@@ -7,7 +7,7 @@
             <label for="calendary" class="col-form-label fw-bold">Día:</label>
         </div>
         <div class="col-auto">
-            <input type="date" id="calendary" class="form-control fw-medium">
+            <input type="date" id="calendary" class="form-control fw-medium border-dark border-2">
         </div>
     </div>
     <!-- Divición de campos -->
@@ -41,5 +41,6 @@
         </div>
     </div>
     <x-slot name="errorText">Debe rellenar todos los campos.</x-slot>
-
+    <x-slot name="btnPrev">
+    </x-slot>
 </x-wrapper>

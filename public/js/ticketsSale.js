@@ -84,6 +84,7 @@ function createRow(TicketInfo, TicketType) {
     let row = document.createElement("div");
     let col = document.createElement("div");
     let p = document.createElement("p");
+    let hr = document.createElement("hr");
 
     // Añadir clases a los elementos
     row.classList.add(
@@ -96,6 +97,14 @@ function createRow(TicketInfo, TicketType) {
     );
     col.classList.add("col-12", "me-auto", "lab");
     p.classList.add("fw-bold");
+    hr.classList.add(
+        "border",
+        "border-dark",
+        "border-2",
+        "rounded-4",
+        "pe-5",
+        "ps-5"
+    );
 
     // Definir atributos y valores
     p.textContent = TicketInfo;
@@ -125,16 +134,8 @@ function createRow(TicketInfo, TicketType) {
             col = generateCommonFields(col);
             break;
     }
-    let hr = document.createElement("hr");
-    hr.classList.add(
-        "border",
-        "border-dark",
-        "border-2",
-        "rounded-4",
-        "pe-5",
-        "ps-5"
-    );
     row.appendChild(hr);
+
     return row;
 }
 
@@ -168,8 +169,8 @@ function generateInputGroup(type, text, placeholder) {
 
     // Añadir clases a los elementos
     inputGroup.classList.add("input-group", "mb-3");
-    span.classList.add("input-group-text");
-    input.classList.add("form-control");
+    span.classList.add("input-group-text", "fw-bold", "border-dark");
+    input.classList.add("form-control", "border-dark");
 
     // Definir stilos
     span.style.minWidth = "85px";
