@@ -4,7 +4,7 @@
     </div>
     <div class="col-auto">
         <div class="input-group">
-            <input type="number" min="0" max="5" value="0" id="menor4"
+            <input type="number" min="0" max="5" value="0"
                 class="form-control text-center border-dark numSales">
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ticketsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,4 +12,4 @@ Route::get('/ticketsSale', function () {
 route::get('/ticketOffice', function () {
     return view('ticketOffice');
 });
-//route::post('/ticketsSale/buy', Controller::class . '');
+route::post('/ticketsSale/buy', [ticketsController::class, 'tickets_save']);
