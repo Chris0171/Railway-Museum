@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,3 +12,4 @@ Route::get('/ticketsSale', function () {
 route::get('/ticketOffice', function () {
     return view('ticketOffice');
 });
+//route::post('/ticketsSale/buy', Controller::class . '');
