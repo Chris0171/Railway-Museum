@@ -18,10 +18,10 @@ const ticketsInf = [
     "Entrada para un menor de cuatro años (Gratis)",
     "Entrada para una persona sin empleo (Gratis)",
     "Entrada para un menor entre 4 y 12 años (3€)",
-    "Entrada para un mayor de 65 años (3$)",
-    "Entrada para un estudiante (3$)",
-    "Entrada para un profesor (3$)",
-    "Entrada para un adulto (7$)",
+    "Entrada para un mayor de 65 años (3€)",
+    "Entrada para un estudiante (3€)",
+    "Entrada para un profesor (3€)",
+    "Entrada para un adulto (7€)",
 ];
 const dis = 65;
 const currentDate = new Date().toISOString().split("T")[0];
@@ -230,7 +230,7 @@ function generateRbOption(labelText, value, id) {
     formCheck.classList.add("form-check", "form-check-inline");
     input.classList.add("form-check-input");
     label.classList.add("form-check-label");
-
+    input.getAttribute("name", "dis");
     // Definir atributos y valores
     input.value = value;
     input.id = id;

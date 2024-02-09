@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tickets;
 use Illuminate\Http\Request;
 
-class ticketsController extends Controller
+class TicketsController extends Controller
 {
     public function tickets_save(Request $request)
     {

@@ -19,19 +19,19 @@
     </x-buyField>
     <!-- Campo 5 -->
     <x-buyField>
-        <x-slot name="fieldName">Mayores de 65 años (3$):</x-slot>
+        <x-slot name="fieldName">Mayores de 65 años (3€):</x-slot>
     </x-buyField>
     <!-- Campo 6 -->
     <x-buyField>
-        <x-slot name="fieldName">Estudiantes (3$):</x-slot>
+        <x-slot name="fieldName">Estudiantes (3€):</x-slot>
     </x-buyField>
     <!-- Campo 7 -->
     <x-buyField>
-        <x-slot name="fieldName">Profesores (3$):</x-slot>
+        <x-slot name="fieldName">Profesores (3€):</x-slot>
     </x-buyField>
     <!-- Campo 8 -->
     <x-buyField>
-        <x-slot name="fieldName">Adultos (7$):</x-slot>
+        <x-slot name="fieldName">Adultos (7€):</x-slot>
     </x-buyField>
     <x-slot name="errorText">Debe comprar al menos una entrada para continuar.</x-slot>
     <x-slot name="btnPrev">

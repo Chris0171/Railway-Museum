@@ -1,5 +1,6 @@
 @extends('head')
 @section('title', 'Tikects Sales')
+@section('script', 'js/ticketsSale.js')
 @section('content')
 
     <div class="row justify-content-center">
@@ -21,6 +22,5 @@
             @include('includes/thirdCard')
         </div>
     </form>
-
 
 @endsection

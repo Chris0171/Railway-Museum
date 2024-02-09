@@ -30,3 +30,9 @@ body {
     opacity: 0;
     transition: 0.3s ease;
 }
+
+#years {
+    border-top: 3px solid rgba(0, 123, 147, 1);
+    max-width: 90px;
+    background-color: rgba(86, 157, 197, 0.4);
+}
