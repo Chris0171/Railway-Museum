@@ -87,11 +87,11 @@ function createCardBody() {
         for (let j = 0; j < parseInt(tickets[index]); j++) {
             if (index == 0) {
                 thirdCardBody.appendChild(
-                    createRow(ticketsInf[parseInt(index)], 1, cont)
+                    createRow(ticketsInf[parseInt(index)], 1, cont, index)
                 );
             } else {
                 thirdCardBody.appendChild(
-                    createRow(ticketsInf[parseInt(index)], 2, cont)
+                    createRow(ticketsInf[parseInt(index)], 2, cont, index)
                 );
             }
             cont++;
@@ -101,7 +101,7 @@ function createCardBody() {
     lastHr[lastHr.length - 1].style.display = "none";
 }
 
-function createRow(TicketInfo, TicketType, id) {
+function createRow(TicketInfo, TicketType, id, index) {
     // Declaracion de elementos
     let row = document.createElement("div");
     let col = document.createElement("div");
@@ -156,6 +156,7 @@ function createRow(TicketInfo, TicketType, id) {
             col = generateCommonFields(col, id);
             break;
     }
+    col.appendChild(generateTicketTypeHiddenInput(id, index));
     row.appendChild(hr);
 
     return row;
@@ -242,4 +243,11 @@ function generateRbOption(labelText, value, id) {
     formCheck.appendChild(input);
     formCheck.appendChild(label);
     return formCheck;
+}
+function generateTicketTypeHiddenInput(id, type) {
+    let input = document.createElement("input");
+    input.setAttribute("name", `tickets[${id}][ticketType]`);
+    input.type = "hidden";
+    input.value = type;
+    return input;
 }

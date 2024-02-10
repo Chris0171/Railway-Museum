@@ -7,7 +7,7 @@
             <label for="calendary" class="col-form-label fw-bold">Día:</label>
         </div>
         <div class="col-auto">
-            <input type="date" id="calendary" class="form-control fw-medium border-dark border-2">
+            <input type="date" name="visitDate" id="calendary" class="form-control fw-medium border-dark border-2">
         </div>
     </div>
     <!-- Divición de campos -->
@@ -20,21 +20,21 @@
         </div>
         <div class="col-auto p-0">
             <div class="form-check">
-                <input type="radio" class="btn-check" name="franja" id="franja1">
+                <input type="radio" class="btn-check" name="franja" id="franja1" value="10:00">
                 <label class="btn border-dark border-2 btn-outline-dark fw-bold rounded-4" for="franja1">10:00 a
                     13:00</label>
             </div>
         </div>
         <div class="col-auto p-0">
             <div class="form-check">
-                <input type="radio" class="btn-check" name="franja" id="franja2">
+                <input type="radio" class="btn-check" name="franja" id="franja2" value="13:00">
                 <label class="btn border-dark border-2 btn-outline-dark fw-bold rounded-4" for="franja2">13:00 a
                     15:00</label>
             </div>
         </div>
         <div class="col-auto p-0">
             <div class="form-check">
-                <input type="radio" class="btn-check" name="franja" id="franja3">
+                <input type="radio" class="btn-check" name="franja" id="franja3" value="15:00">
                 <label class="btn border-dark border-2 btn-outline-dark fw-bold rounded-4" for="franja3">15:00 a 18:00
                 </label>
             </div>
