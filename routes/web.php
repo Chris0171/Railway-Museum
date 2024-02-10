@@ -16,3 +16,7 @@ route::get('/login', function () {
     return view('login');
 });
 route::post('/ticketsSale/buy', [TicketsController::class, 'tickets_save']);
+
+Route::fallback(function () {
+    return view('error404');
+});
