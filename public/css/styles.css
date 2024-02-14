@@ -6,6 +6,18 @@ body {
     padding: 0;
 }
 
+.link {
+    text-decoration: none;
+    color: rgb(222, 222, 222);
+    font-weight: bold;
+}
+.section {
+    color: rgb(222, 222, 222);
+}
+.link:hover {
+    text-decoration: none;
+    color: rgb(108, 216, 131);
+}
 .wrapper {
     flex: 1;
 }
@@ -14,7 +26,12 @@ body {
     background-color: rgb(86, 157, 197);
     box-shadow: 3px 3px 15px rgb(69, 69, 69);
 }
-
+.bg-footer {
+    background-color: rgb(86, 157, 197);
+}
+.bg-footer-1 {
+    background-color: rgb(77, 125, 152);
+}
 .contShadow {
     box-shadow: 3px 3px 15px rgb(69, 69, 69);
 }

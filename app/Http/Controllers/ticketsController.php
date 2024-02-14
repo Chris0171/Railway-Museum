@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
-
+use Illuminate\Support\Facades\Redirect;
 
 class TicketsController extends Controller
 {
@@ -37,6 +37,7 @@ class TicketsController extends Controller
 
             // Recorrer todos los datos
             foreach ($data as $elem) {
+                // Validar cada elemento del array
                 $validator = Validator::make($elem, $rules);
                 if ($validator->fails()) {
                     $errors[] = $validator->errors()->toArray();
@@ -61,6 +62,7 @@ class TicketsController extends Controller
             // Enviar los errores de var
             return response()->json(["error" => $e->getMessage(), $errors], 500);
         }
+        return Redirect::route('buySuccess', ['success' => 1]);
     }
     private function getTicketExtraData($id)
     {
