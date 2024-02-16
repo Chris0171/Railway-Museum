@@ -42,18 +42,18 @@ class TicketsController extends Controller
                 if ($validator->fails()) {
                     $errors[] = $validator->errors()->toArray();
                 } else {
-                    $ticketTypeEnum = $this->getTicketExtraData($data[0]["ticketType"])[0];
-                    $price = $this->getTicketExtraData($data[0]["ticketType"])[1];
-                    $ticketType = $this->getTicketExtraData($data[0]["ticketType"])[2];
+                    $ticketTypeEnum = $this->getTicketExtraData($elem["ticketType"])[0];
+                    $price = $this->getTicketExtraData($elem["ticketType"])[1];
+                    $ticketType = $this->getTicketExtraData($elem["ticketType"])[2];
 
                     // Creando instancias de clases
-                    $this->sendQRCodeByEmail($data[0]["name"], $data[0]["dni"], $timeSlot, $request->input("visitDate"), $ticketType, $price);
+                    $this->sendQRCodeByEmail($elem["name"], $elem["dni"], $timeSlot, $request->input("visitDate"), $ticketType, $price);
                     $tickets = new Tickets();
-                    $tickets->visitorFullName = $data[0]["name"];
+                    $tickets->visitorFullName = $elem["name"];
                     $tickets->dateOfVisit = $visitDate;
                     $tickets->tycketType = $ticketTypeEnum;
-                    $tickets->documentNumber = $data[0]["dni"];
-                    $tickets->email = $data[0]["email"];
+                    $tickets->documentNumber = $elem["dni"];
+                    $tickets->email = $elem["email"];
                     $tickets->price = $price;
                     $tickets->save();
                 }
