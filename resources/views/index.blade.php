@@ -21,7 +21,6 @@
             @endisset
         </div>
     </div>
-
     <div class="row">
         <div class="col-12 col-md-11 col-lg-10 mb-1 text-end">
             <a class="btn btn-success mb-3 contShadow" href="/ticketsSale">Venta de entradas</a>
@@ -60,6 +59,67 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+        </div>
+    </div>
+    {{-- Exposiciones --}}
+    <h2 class="p-2 mt-5 st-border fw-bold">Exposiciones</h2>
+    <hr class="border border-secondary border-2 opacity-100">
+    <div class="row justify-content-center align-items-center mt-3 pe-4 ps-4">
+        <div class="col-12 col-md-6">
+            <h4>Exposiciones temporales: </h4>
+            <div class="row">
+                <div class="col-12 mb-3 col-lg-6">
+                    <a href="https://www.museodelferrocarril.org/temporal/Revelando-ferrocarril.asp" target="_blank">
+                        <img class="img-fluid rounded expo" src="/images/Expo_1.jpg" alt="Primera exposición">
+                    </a>
+                </div>
+                <div class="col-12 mb-3 col-lg-6">
+                    <a href="https://www.museodelferrocarril.org/temporal/Belleza-ferroviaria.asp" target="_blank">
+                        <img class="img-fluid rounded expo" src="/images/Expo_2.jpg" alt="Segunda exposición">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h4>Exposiciones virtuales: </h4>
+            <div class="row">
+                <div class="col-12 mb-3 col-lg-6">
+                    <a href="https://www.museodelferrocarril.org/140Delicias/index.asp" target="_blank">
+                        <img class="img-fluid rounded expo" src="/images/Expo_3.jpg" alt="Tercera exposición">
+                    </a>
+                </div>
+                <div class="col-12 mb-3 col-lg-6">
+                    <a href="">
+                        <img class="img-fluid rounded expo" src="/images/Expo_4.jpg" target="_blank"
+                            alt="Cuarta exposición">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Noticias --}}
+    <h2 class="p-2 mt-5 fw-bold st-border">Noticias</h2>
+    <hr class="border border-secondary border-3 opacity-100">
+    <div class="row justify-content-center mt-3 pe-4 ps-4">
+        <div class="col-4 p-2 rounded bg-primary bg-opacity-25 expo">
+            <a href="https://www.museodelferrocarril.org/comunicacion/noticia.asp?item=709">
+                <img class="img-fluid rounded" src="/images/News.jpg" alt="Imagen de noticias" class="img-fluid">
+            </a>
+        </div>
+        <div class="col-8 p-3 ps-5 pe-5">
+            <a class="link-success link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                href="https://www.museodelferrocarril.org/comunicacion/noticia.asp?item=709">
+                <h3>Programación de febrero</h3>
+            </a>
+            <h6 class="mt-4 lh-base text-justify">
+                Con el apoyo de la Fundación Talgo, el Museo ha organizado una charla con alumnado del CEIP Juan Sebastián
+                Elcano (Madrid) en la que participará una ingeniera que desarrolla su labor profesional en la empresa
+                ferroviaria Talgo. La jornada forma parte del proyecto ‘Hacia las STEAM por la Vía del Ferrocarril',
+                impulsado por la Fundación de los Ferrocarriles Españoles, que tiene como objetivo fomentar las vocaciones
+                científicas y el espíritu innovador, fundamentalmente entre las jóvenes y las niñas, animándolas a
+                decantarse por disciplinas relacionadas con la investigación e innovación en el ferrocarril.
+            </h6>
         </div>
     </div>
 @endsection

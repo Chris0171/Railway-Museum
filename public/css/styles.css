@@ -53,3 +53,21 @@ body {
     max-width: 90px;
     background-color: rgba(86, 157, 197, 0.4);
 }
+#type {
+    border-top: 3px solid rgba(0, 123, 147, 1);
+    max-width: 90px;
+    background-color: rgba(86, 157, 197, 0.4);
+}
+.st-border {
+    border-left: 8px solid rgb(4, 116, 39);
+}
+.expo {
+    box-shadow: 3px 4px 15px rgb(83, 83, 83);
+    transition: 0.4s ease all;
+}
+.expo:hover {
+    transform: scale(1.05);
+}
+.text-justify {
+    text-align: justify;
+}
