@@ -30,9 +30,11 @@
                         <p class="h3 mt-2">Iniciar Sesión</p>
                     </div>
                     <div class="card-body text-dark text-center">
+                        <input name="email" type="hidden" value="cmilanesr@alumnos.nebrija.es">
                         <div class="input-group p-3 ps-5 pe-5">
                             <span class="input-group-text fw-bold border-dark" id="inputPass">Contraseña: </span>
-                            <input type="text" class="form-control border-dark" placeholder="Contraseña...">
+                            <input name="password" type="text" class="form-control border-dark"
+                                placeholder="Contraseña...">
                         </div>
                     </div>
                     <div class="card-footer bg-light text-end p-3">
