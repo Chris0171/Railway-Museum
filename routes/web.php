@@ -14,7 +14,7 @@ Route::get('/ticketsSale', function () {
 
 route::get('/ticketOffice', function () {
     return view('ticketOffice');
-});
+})->name("ticketOffice");
 
 route::post('/ticketsSale/buy', [TicketsController::class, 'tickets_save']);
 
