@@ -2,6 +2,7 @@
 const date_hours = document.getElementById("first");
 const buyTickets = document.getElementById("second");
 const confirmTickets = document.getElementById("third");
+const summaryTickets = document.getElementById("fourth");
 const btnsNext = document.getElementsByClassName("btnNext");
 const btnsPrev = document.getElementsByClassName("btnPrev");
 const date = document.getElementById("calendary");
@@ -10,6 +11,11 @@ const numSales = document.getElementsByClassName("numSales");
 const errorMessage = document.getElementsByClassName("errorMessage");
 const thirdCardBody = document.getElementsByClassName("card-body")[2];
 const ticketsForm = document.getElementById("ticketForm");
+const summaryCardBody = document.getElementById("summaryCardBody");
+const btnConfirm = document.getElementById("btnConfirm");
+const messageCol = document.getElementsByClassName("messageCol");
+const btnModalDate = document.getElementById("modalDate");
+const btnModalClose = document.getElementById("btnModalClose");
 
 // Variables necesarias para la lógica
 let tickets = {};
@@ -24,18 +30,41 @@ const ticketsInf = [
     "Entrada para un adulto (7€)",
 ];
 const dis = 65;
-const currentDate = new Date().toISOString().split("T")[0];
+const minDate = new Date();
 const disableDates = ["12-25", "01-01", "01-06"];
 
-date.min = currentDate;
-// Eventos
+minDate.setDate(minDate.getDate() + 1);
+date.value = minDate.toISOString().split("T")[0];
+date.min = minDate.toISOString().split("T")[0];
+
+let typeArr;
+let nameArr;
+let dniArr;
+let emailArr;
+
+/* ********* Next Button Events *********  */
+date.addEventListener("change", function () {
+    const selectedDate = new Date(date.value);
+    const noOpenDays = [1, 6, 25];
+
+    if (noOpenDays.includes(selectedDate.getDate())) {
+        btnModalDate.click();
+    }
+});
+btnModalClose.addEventListener("click", function () {
+    date.value = minDate.toISOString().split("T")[0];
+});
 btnsNext[0].addEventListener("click", function () {
     const validate = validateRadioButtons(hourOptions);
     if (date.value && validate) {
         date_hours.style.display = "none";
         buyTickets.style.display = "block";
+        messageCol[0].style.display = "none";
+        errorMessage[0].style.display = "none";
         errorMessage[0].style.opacity = 0;
     } else {
+        messageCol[0].style.display = "block";
+        errorMessage[0].style.display = "block";
         errorMessage[0].style.opacity = 1;
     }
 });
@@ -43,16 +72,38 @@ btnsNext[1].addEventListener("click", function () {
     if (validateTickets()) {
         buyTickets.style.display = "none";
         confirmTickets.style.display = "block";
+        messageCol[1].style.display = "none";
         errorMessage[1].style.opacity = 0;
+        errorMessage[1].style.display = "none";
         createCardBody();
     } else {
+        messageCol[1].style.display = "block";
+        errorMessage[1].style.opacity = "block";
         errorMessage[1].style.opacity = 1;
     }
 });
 btnsNext[2].addEventListener("click", function () {
+    if (checkFormValues()) {
+        confirmTickets.style.display = "none";
+        summaryTickets.style.display = "block";
+        errorMessage[2].style.opacity = 0;
+        errorMessage[2].style.display = "none";
+        messageCol[2].style.display = "none";
+        generateSummaryTBody();
+    } else {
+        messageCol[2].style.display = "block";
+        errorMessage[2].style.opacity = "block";
+        errorMessage[2].style.opacity = 1;
+    }
+});
+btnsNext[3].addEventListener("click", function () {
+    document.getElementById("btnModal").click();
+});
+btnConfirm.addEventListener("click", function () {
     ticketsForm.submit();
 });
 
+/* ********* Prev Button Events *********  */
 btnsPrev[0].addEventListener("click", function () {
     buyTickets.style.display = "none";
     date_hours.style.display = "block";
@@ -62,6 +113,11 @@ btnsPrev[1].addEventListener("click", function () {
     buyTickets.style.display = "block";
     thirdCardBody.innerHTML = "";
     tickets = {};
+});
+btnsPrev[2].addEventListener("click", function () {
+    confirmTickets.style.display = "block";
+    summaryCardBody.innerHTML = "";
+    summaryTickets.style.display = "none";
 });
 
 function validateRadioButtons(element) {
@@ -79,6 +135,26 @@ function validateTickets() {
         }
     }
     return validate;
+}
+function checkFormValues() {
+    typeArr = document.getElementsByClassName("type");
+    nameArr = document.getElementsByClassName("name");
+    dniArr = document.getElementsByClassName("dni");
+    emailArr = document.getElementsByClassName("email");
+
+    let flag = true;
+    for (let i = 0; i < typeArr.length; i++) {
+        if (
+            typeArr[i].value == "" ||
+            nameArr[i].value == "" ||
+            dniArr[i].value == "" ||
+            emailArr[i].value == ""
+        ) {
+            flag = false;
+            i = typeArr.length;
+        }
+    }
+    return flag;
 }
 
 function createCardBody() {
@@ -199,20 +275,24 @@ function generateInputGroup(type, text, placeholder, id, name) {
     let inputGroup = document.createElement("div");
     let span = document.createElement("span");
     let input = document.createElement("input");
+    let divAlert = document.createElement("div");
 
     // Añadir clases a los elementos
     inputGroup.classList.add("input-group", "mb-3");
     span.classList.add("input-group-text", "fw-bold", "border-dark");
-    input.classList.add("form-control", "border-dark");
+    input.classList.add("form-control", "border-dark", name);
+    divAlert.classList.add("invalid-feedback");
 
     // Definir stilos
     span.style.minWidth = "95px";
+    divAlert.textContent = "Debe relledar este campo.";
 
     // Definir atributos y valores
     span.textContent = text;
     input.type = type;
     input.placeholder = placeholder;
     input.setAttribute("name", `tickets[${id}][${name}]`);
+    input.setAttribute("required", "required");
 
     // Enlazar elementos
     inputGroup.appendChild(span);
@@ -232,6 +312,8 @@ function generateRbOption(labelText, value, id) {
     input.classList.add("form-check-input");
     label.classList.add("form-check-label");
     input.getAttribute("name", "dis");
+    input.setAttribute("required", "required");
+
     // Definir atributos y valores
     input.value = value;
     input.id = id;
@@ -246,8 +328,82 @@ function generateRbOption(labelText, value, id) {
 }
 function generateTicketTypeHiddenInput(id, type) {
     let input = document.createElement("input");
+    input.classList.add("type");
     input.setAttribute("name", `tickets[${id}][ticketType]`);
     input.type = "hidden";
     input.value = type;
     return input;
+}
+
+/* ********* Summary Card *********  */
+function generateSummaryTBody() {
+    for (let i = 0; i < nameArr.length; i++) {
+        summaryCardBody.appendChild(
+            generateTr(
+                typeArr[i].value,
+                nameArr[i].value,
+                dniArr[i].value,
+                emailArr[i].value
+            )
+        );
+    }
+}
+
+function generateTr(type, name, email, dni) {
+    let tr = document.createElement("tr");
+    let tdType = document.createElement("td");
+    tdType.textContent = getTicketDataByType(type)[0];
+    tr.appendChild(tdType);
+    let tdName = document.createElement("td");
+    tdName.textContent = name;
+    tr.appendChild(tdName);
+    let tdEmail = document.createElement("td");
+    tdEmail.textContent = email;
+    tr.appendChild(tdEmail);
+    let tdDni = document.createElement("td");
+    tdDni.textContent = dni;
+    tr.appendChild(tdDni);
+    let tdPrice = document.createElement("td");
+    tdPrice.textContent = getTicketDataByType(type)[1];
+    tr.appendChild(tdPrice);
+
+    return tr;
+}
+function getTicketDataByType(type) {
+    let data = ["", ""];
+    switch (type) {
+        case "0":
+            data[0] = "Discapacidad";
+            data[1] = "0.00€";
+            break;
+        case "1":
+            data[0] = "Menor de 4 años";
+            data[1] = "0.00€";
+            break;
+        case "2":
+            data[0] = "Desempleado";
+            data[1] = "0.00€";
+            break;
+        case "3":
+            data[0] = "Menor entre 4 y 12 años";
+            data[1] = "0.00€";
+            break;
+        case "4":
+            data[0] = "Mayor de 65 años";
+            data[1] = "0.00€";
+            break;
+        case "5":
+            data[0] = "Estudiante";
+            data[1] = "0.00€";
+            break;
+        case "6":
+            data[0] = "Profesor";
+            data[1] = "0.00€";
+            break;
+        case "7":
+            data[0] = "Adulto";
+            data[1] = "0.00€";
+            break;
+    }
+    return data;
 }
