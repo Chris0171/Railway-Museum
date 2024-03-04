@@ -16,6 +16,7 @@ const btnConfirm = document.getElementById("btnConfirm");
 const messageCol = document.getElementsByClassName("messageCol");
 const btnModalDate = document.getElementById("modalDate");
 const btnModalClose = document.getElementById("btnModalClose");
+const totalP = document.getElementById("totalP");
 
 // Variables necesarias para la lógica
 let tickets = {};
@@ -29,6 +30,7 @@ const ticketsInf = [
     "Entrada para un profesor (3€)",
     "Entrada para un adulto (7€)",
 ];
+let totalPrice = 0;
 const dis = 65;
 const minDate = new Date();
 const disableDates = ["12-25", "01-01", "01-06"];
@@ -78,7 +80,7 @@ btnsNext[1].addEventListener("click", function () {
         createCardBody();
     } else {
         messageCol[1].style.display = "block";
-        errorMessage[1].style.opacity = "block";
+        errorMessage[1].style.display = "block";
         errorMessage[1].style.opacity = 1;
     }
 });
@@ -92,7 +94,7 @@ btnsNext[2].addEventListener("click", function () {
         generateSummaryTBody();
     } else {
         messageCol[2].style.display = "block";
-        errorMessage[2].style.opacity = "block";
+        errorMessage[2].style.display = "block";
         errorMessage[2].style.opacity = 1;
     }
 });
@@ -347,6 +349,7 @@ function generateSummaryTBody() {
             )
         );
     }
+    totalP.textContent = `Total ${totalPrice}.00€.`;
 }
 
 function generateTr(type, name, email, dni) {
@@ -365,44 +368,53 @@ function generateTr(type, name, email, dni) {
     tr.appendChild(tdDni);
     let tdPrice = document.createElement("td");
     tdPrice.textContent = getTicketDataByType(type)[1];
+    totalPrice += getTicketDataByType(type)[2];
     tr.appendChild(tdPrice);
 
     return tr;
 }
 function getTicketDataByType(type) {
-    let data = ["", ""];
+    let data = ["", "", 0];
     switch (type) {
         case "0":
             data[0] = "Discapacidad";
             data[1] = "0.00€";
+            data[2] = 0.0;
             break;
         case "1":
             data[0] = "Menor de 4 años";
             data[1] = "0.00€";
+            data[2] = 0.0;
             break;
         case "2":
             data[0] = "Desempleado";
             data[1] = "0.00€";
+            data[2] = 0.0;
             break;
         case "3":
             data[0] = "Menor entre 4 y 12 años";
-            data[1] = "0.00€";
+            data[1] = "3.00€";
+            data[2] = 3.0;
             break;
         case "4":
             data[0] = "Mayor de 65 años";
-            data[1] = "0.00€";
+            data[1] = "3.00€";
+            data[2] = 3.0;
             break;
         case "5":
             data[0] = "Estudiante";
-            data[1] = "0.00€";
+            data[1] = "3.00€";
+            data[2] = 3.0;
             break;
         case "6":
             data[0] = "Profesor";
-            data[1] = "0.00€";
+            data[1] = "3.00€";
+            data[2] = 3.0;
             break;
         case "7":
             data[0] = "Adulto";
-            data[1] = "0.00€";
+            data[1] = "7.00€";
+            data[2] = 7.0;
             break;
     }
     return data;
